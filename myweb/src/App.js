@@ -1,24 +1,48 @@
-import "../src/assets/sass/app.scss";
 
-import Product_detail from "./pages/Product-detail";
+
+
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LayoutStie from "./layoutsite";
 
+import LayoutAdmin from "./layoutadmin";
+import RouterSite from "./router";
 
 function App() {
   return (
-    
+
     <>
-      
+
+      {/* <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LayoutStie />}>
+            <Route index element={<Main />} />
+            <Route path="product-detail" element={<Product_detail />} />
+          </Route>
+          <Routes path="/admin" element={<LayoutAdmin />}>
+          <Route index element={<index />} />
+          </Routes>
+        </Routes>
+      </BrowserRouter> */}
+       <div className="App">
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LayoutSite />}> 
-        {/* router có thẻ đóng và mở là thằng cha thằng con sẻ kế thừa thằng cha :V */}
-          <Route index element={<Home />} />
-          <Route path="product-detail" element={<Product_detail />} />
-          <Route path="contact" element={<Contact />} />
-        </Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<LayoutStie />}>
+            {RouterSite.RouterPublic.map(function (route, index) {
+              const Page = route.component;
+              return <Route key={index} path={route.path} element={<Page />} />
+            })}
+          </Route>
+          {/*  */}
+          <Route path="/admin" element={<LayoutAdmin />}>
+            {RouterSite.RouterPrivate.map(function (route, index) {
+              const Page = route.component;
+              return <Route key={index} path={route.path} element={<Page />} />
+            })}
+          </Route>
+        </Routes>
       </BrowserRouter>
+    </div>
 
 
     </>
