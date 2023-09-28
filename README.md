@@ -11,3 +11,5 @@ Email: nn5591078@gmail.com
 ## Thời hạn deadline:
 Từ ngày 7/9 -> 14/9 : làm giao diện web
 Từ ngày 14/9 -> 23/9 : làm giao diện trang quản lý, lấy dữ liệu bảng category từ phpmyadmin
+Từ ngày 23/9 -> 28/9 : làm thêm sửa xóa bảng product, slider, brand, category
+xổ được dữ liệu từ bảng slider lên trang frontend
