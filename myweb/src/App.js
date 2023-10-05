@@ -7,6 +7,7 @@ import LayoutStie from "./layoutsite";
 
 import LayoutAdmin from "./layoutadmin";
 import RouterSite from "./router";
+import "../src/assets/sass/app.scss"
 
 function App() {
   return (

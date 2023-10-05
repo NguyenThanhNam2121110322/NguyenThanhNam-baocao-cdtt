@@ -55,7 +55,6 @@ function CategoryUpdate() {
         else {
             category.append("image", image.files[0]);
         }
-
         await categoryservice.update(category, id).then(function (res) {
             alert(res.data.message);
             navigate('/admin/category', { replace: true });

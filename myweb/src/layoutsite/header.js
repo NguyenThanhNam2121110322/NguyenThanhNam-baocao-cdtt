@@ -44,7 +44,7 @@ const Header = () => (
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="index.html">Home</a>
+								<a href="/">Home</a>
 								
 							</li>
 
@@ -66,6 +66,9 @@ const Header = () => (
 
 							<li>
 								<a href="contact.html">Contact</a>
+							</li>
+							<li>
+								<a href="admin">Admin</a>
 							</li>
 						</ul>
 					</div>	

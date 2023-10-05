@@ -27,8 +27,12 @@ function getBySLug(slug){
     return httpAxios.get(`category/show/${slug}`);
 
 }
+function getCategoryAll(limit){
+    return httpAxios.get(`category_all/${limit}`);
+}
 
 const categoryservice = {
+    getCategoryAll:getCategoryAll,
     getCategoryByParentId:getCategoryByParentId,
     getBySLug:getBySLug,
     getAll: getAll,

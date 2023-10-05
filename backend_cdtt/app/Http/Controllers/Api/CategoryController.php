@@ -20,6 +20,21 @@ class CategoryController extends Controller
             200
         );
     }
+    public function category_all($limit)
+    {
+        $categorys = Category::where('status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->limit($limit)
+            ->get();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Tải dữ liệu thành công',
+                'category' => $categorys
+            ],
+            200
+        );
+    }
 
     /*lay bang id -> chi tiet */
     public function show($id)
