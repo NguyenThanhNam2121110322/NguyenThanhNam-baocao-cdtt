@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('link',1000);
             $table->unsignedInteger('sort_order');
             $table->string('position',255);
+            $table->string('description',1000);
             $table->timestamps();
             $table->unsignedInteger('created_by')->default(1);
             $table->unsignedInteger('updated_by');

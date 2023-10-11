@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\UserController;
 
 Route::get('category/index',[CategoryController::class,'index']);
 Route::get('category/show/{id}', [CategoryController::class, 'show']);
@@ -41,3 +42,10 @@ Route::get('brand/show/{id}', [BrandController::class, 'show']);
 Route::post('brand/store', [BrandController::class, 'store']);
 Route::post('brand/update/{id}', [BrandController::class, 'update']);
 Route::delete('brand/destroy/{id}', [BrandController::class, 'destroy']);
+
+Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('user', [UserController::class, 'user']);
+    Route::post('logout', [UserController::class, 'logout']);
+});
