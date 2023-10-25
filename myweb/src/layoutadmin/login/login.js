@@ -4,11 +4,12 @@ import background from "../../assets/images/bg-login.jpg";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import userservices from "../../services/UserServices";
+import {useAuth} from "../../provider/AuthProvider";
 
 function Login() {
-	const navigate = useNavigate(); // chuyen trang
 
 
+	const { setToken } = useAuth();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -24,12 +25,10 @@ function Login() {
 		await userservices.login(email, password).then(function (res) {
 			alert(res.data.message)
 			if (res.data.success) {
-				
-				window.location.href = 'http://localhost:3000/admin';
+				setToken(res.data.data.id)
 			  } else {
-				window.location.reload();
+				setToken();
 			  }
-			// navigate('/admin', { replace: true });
 		})
 
 		

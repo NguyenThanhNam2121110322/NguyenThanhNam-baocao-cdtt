@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Contact extends Model
 {
     use HasFactory;
-    protected $table='db_contact'; //thêm dòng này
+    protected $table = 'db_contact';
 }

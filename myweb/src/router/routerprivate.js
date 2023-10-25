@@ -24,7 +24,30 @@ import BrandUpdate from "../pages/backend/Brand/BrandUpdate";
 import BrandCreate from "../pages/backend/Brand/BrandCreate";
 import BrandShow from "../pages/backend/Brand/BrandShow";
 
+import UserCreate from "../pages/backend/User/UserCreate";
+import UserList from "../pages/backend/User/UserList";
+import UserShow from "../pages/backend/User/UserShow";
+import UserUpdate from "../pages/backend/User/UserUpdate";
 
+import MenuCreate from "../pages/backend/Menu/MenuCreate";
+import MenuList from "../pages/backend/Menu/MenuList";
+import MenuShow from "../pages/backend/Menu/MenuShow";
+import MenuUpdate from "../pages/backend/Menu/MenuUpdate";  
+
+import ContactCreate from "../pages/backend/Contact/ContactCreate";
+import ContactList from "../pages/backend/Contact/ContactList";
+import ContactShow from "../pages/backend/Contact/ContactShow";
+import ContactUpdate from "../pages/backend/Contact/ContactUpdate";
+
+import OrderCreate from "../pages/backend/Order/OrderCreate";
+import OrderList from "../pages/backend/Order/OrderList";
+import OrderShow from "../pages/backend/Order/OrderShow";
+import OrderUpdate from "../pages/backend/Order/OrderUpdate";
+
+import TopicCreate from "../pages/backend/Topic/TopicCreate";
+import TopicList from "../pages/backend/Topic/TopicList";
+import TopicShow from "../pages/backend/Topic/TopicShow";
+import TopicUpdate from "../pages/backend/Topic/TopicUpdate";
 
 
 
@@ -51,6 +74,30 @@ const RouterPrivate = [
     {path:'/admin/brand/update/:id',component:BrandUpdate},
     {path:'/admin/brand/show/:id',component:BrandShow},
 
+    { path: "/admin/user", component:UserList },
+    { path: "/admin/user/create", component:UserCreate },
+    { path: "/admin/user/show/:id", component:UserShow },
+    { path: "/admin/user/update/:id", component:UserUpdate},
+
+    {path:'/admin/menu',component:MenuList},
+    {path:'/admin/menu/create',component:MenuCreate},
+    {path:'/admin/menu/update/:id',component:MenuUpdate},
+    {path:'/admin/menu/show/:id',component:MenuShow},
+
+    {path:'/admin/contact',component:ContactList},
+    {path:'/admin/contact/create',component:ContactCreate},
+    {path:'/admin/contact/update/:id',component:ContactUpdate},
+    {path:'/admin/contact/show/:id',component:ContactShow},
+
+    {path:'/admin/order',component:OrderList},
+    {path:'/admin/order/create',component:OrderCreate},
+    {path:'/admin/order/update/:id',component:OrderUpdate},
+    {path:'/admin/order/show/:id',component:OrderShow},
+
+    {path:'/admin/topic',component:TopicList},
+    {path:'/admin/topic/create',component:TopicCreate},
+    {path:'/admin/topic/update/:id',component:TopicUpdate},
+    {path:'/admin/topic/show/:id',component:TopicShow},
 
 ];
 export default RouterPrivate;

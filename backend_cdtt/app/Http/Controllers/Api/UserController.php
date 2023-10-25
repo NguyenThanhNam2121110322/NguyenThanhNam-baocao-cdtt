@@ -13,7 +13,73 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     
-    
+    public function index()
+    {
+        $user = User::all();
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'users' => $user],
+            200
+        );
+    }
+    public function show($id)
+    {
+        $user = User::find($id);
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'user' => $user],
+            200
+        );
+    }
+    public function store(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->name; //form
+        // $user->slug = Str::of($request->name)->slug('-');
+        // $brand->image = $request->name;
+        // $user->sort_order = $request->sort_order; //form
+        // $user->metakey = $request->metakey; //form
+        // $user->metadesc = $request->metadesc; //form
+        // $user->created_at = date('Y-m-d H:i:s');
+        // $user->created_by = 1;
+        // $user->status = $request->status; //form
+        $user->save(); //Luuu vao CSDL
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $user],
+            201
+        );
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name; //form
+        // $user->slug = Str::of($request->name)->slug('-');
+        // $user->image = $request->name;
+        // $user->sort_order = $request->sort_order; //form
+        // $user->metakey = $request->metakey; //form
+        // $user->metadesc = $request->metadesc; //form
+        // $user->updated_at = date('Y-m-d H:i:s');
+        // $user->updated_by = 1;
+        // $user->status = $request->status; //form
+        $user->save(); //Luuu vao CSDL
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $user],
+            200
+        );
+    }
+    public function destroy($id)
+    {
+        $user=User::find($id);
+        if($user==null){
+            return response()->json(
+                ['success' => false, 'message' => 'Xóa dữ liệu không thành công', 'data' => null],
+                404
+            );
+        }
+        $user->delete();
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $user],
+            200
+        );
+}
 
 
     public function register(Request $request)
