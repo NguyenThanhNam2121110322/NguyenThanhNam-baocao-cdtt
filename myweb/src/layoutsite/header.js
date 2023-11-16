@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Menu from "./menu";
+import { Margin, Padding } from "@mui/icons-material";
 
 
-const Header = () => (
+function Header  ()  {
+	const[key,setKey]=useState();
+	return(
     <>
         <header>
 		{/* <!-- Header desktop --> */}
@@ -45,9 +49,21 @@ const Header = () => (
 					<Menu/>
 
 					{/* <!-- Icon header --> */}
+
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
+					
+						<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+						<div class="header-search-container">
+                        <form action={"/Product_search/" + key} method="" >
+
+                            <input  onChange={(e) => setKey(e.target.value)} type="text"  value={key} class="search-field" placeholder="Tìm kiếm sản phẩm..." />
+
+                            <button class="search-btn">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </button>
+                        </form>
+                    </div>
+							{/* <i class="zmdi zmdi-search"></i> */}
 						</div>
 
 						<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
@@ -162,7 +178,7 @@ const Header = () => (
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE"/>
+					<img src="../assets/images/icons/icon-close2.png" alt="CLOSE"/>
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">
@@ -177,5 +193,6 @@ const Header = () => (
 	
 
     </>
-);
+	)
+};
 export default Header;

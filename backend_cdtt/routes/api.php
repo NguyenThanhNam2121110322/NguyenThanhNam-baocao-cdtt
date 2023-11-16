@@ -18,6 +18,7 @@ Route::get('category/show/{id}', [CategoryController::class, 'show']);
 Route::post('category/store', [CategoryController::class, 'store']);
 Route::post('category/update/{id}', [CategoryController::class, 'update']);
 Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy']);
+Route::get('category_list/{parent_id?}', [CategoryController::class, 'category_list']);
 
 
 Route::get('product/product_list/{limit}/{category_id?}/{status?}', [ProductController::class, 'product_list']);
@@ -26,6 +27,7 @@ Route::get('product_all/{limit}', [ProductController::class, 'product_all']);
 Route::get('product_category/{category_id}/{limit}', [ProductController::class, 'product_category']);
 Route::get('product_brand/{brand_id}/{limit}', [ProductController::class, 'product_brand']);
 Route::get('product_detail/{slug}', [ProductController::class, 'product_detail']);
+Route::get('search_product/{key}/{limit}/{page}',[ProductController::class,'search_product']);
 
 Route::get('product/index',[ProductController::class,'index']);
 Route::get('product/show/{id}', [ProductController::class, 'show']);
@@ -73,6 +75,7 @@ Route::get('contact/show/{id}', [ContactController::class, 'show']);
 Route::post('contact/store', [ContactController::class, 'store']);
 Route::post('contact/update/{id}', [ContactController::class, 'update']);
 Route::delete('contact/destroy/{id}', [ContactController::class, 'destroy']);
+Route::post('contact/submit', [ContactController::class, 'submit']);
 
 Route::get('order/index',[OrderController::class,'index']);
 Route::get('order/show/{id}', [OrderController::class, 'show']);

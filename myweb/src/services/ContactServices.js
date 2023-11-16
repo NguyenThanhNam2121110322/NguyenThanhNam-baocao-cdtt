@@ -19,12 +19,16 @@ function update(contact,id){
 function remove(id){
     return httpAxios.delete('contact/destroy/'+id)
 }
+function submit(name, email, phonenumber,content) {
+    return httpAxios.post('contact/submit', { name, email, phonenumber,content });
+  }
 
 const contactservices={
     getAll:getAll,
     getById:getById,
     create:create,
     update:update,
-    remove:remove
+    remove:remove,
+    submit:submit
 }
 export default contactservices;

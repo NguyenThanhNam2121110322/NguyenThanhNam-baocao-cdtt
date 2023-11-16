@@ -49,7 +49,10 @@ import TopicList from "../pages/backend/Topic/TopicList";
 import TopicShow from "../pages/backend/Topic/TopicShow";
 import TopicUpdate from "../pages/backend/Topic/TopicUpdate";
 
-
+import PostList from "../pages/backend/Post/PostList";
+import PostCreate from "../pages/backend/Post/PostCreate";
+import PostUpdate from "../pages/backend/Post/PostUpdate";
+import PostShow from "../pages/backend/Post/PostShow";
 
 
 const RouterPrivate = [
@@ -99,5 +102,9 @@ const RouterPrivate = [
     {path:'/admin/topic/update/:id',component:TopicUpdate},
     {path:'/admin/topic/show/:id',component:TopicShow},
 
+    {path:'/admin/post',component:PostList},
+    {path:'/admin/post/create',component:PostCreate},
+    {path:'/admin/post/update/:id',component:PostUpdate},
+    {path:'/admin/post/show/:id',component:PostShow},
 ];
 export default RouterPrivate;

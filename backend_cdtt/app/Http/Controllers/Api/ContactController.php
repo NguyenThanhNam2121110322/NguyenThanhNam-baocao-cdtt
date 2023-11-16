@@ -65,4 +65,16 @@ class ContactController extends Controller
         $contact->delete();
         return response()->json(['success' => true, 'message' => 'Xóa thành công', 'contact' => null],200);
     }
+    public function submit(Request $request){
+        $contact = new Contact();
+        $contact->name = $request->name; //form
+        $contact->email = $request->email; //form
+        $contact->phone = $request->phonenumber; //form
+        $contact->content = $request->content; //form
+        $contact->created_at = date('Y-m-d H:i:s');
+        $contact->created_by = 1;
+        $contact->status = 1; //form
+        $contact->save(); //Luuu vao CSDL
+        return response()->json(['success' => true, 'message' => 'Thành công', 'data' => $contact],201); 
+    }
 }

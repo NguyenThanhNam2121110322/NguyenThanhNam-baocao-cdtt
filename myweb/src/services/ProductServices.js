@@ -39,7 +39,12 @@ function getProductByBrandId(limit,brand_id){
     return httpAxios.get(`product_brand/${limit}/${brand_id}`);
 }
 
+function getSearchProduct(key,limit,page){
+    return httpAxios.get(`/search_product/${key}/${limit}/${page}`);
+}
+
 const productservice = {
+    getSearchProduct:getSearchProduct,
     getProductCategoryAll:getProductCategoryAll,
     getProductHome:getProductHome,
     getProductByCategoryId:getProductByCategoryId,

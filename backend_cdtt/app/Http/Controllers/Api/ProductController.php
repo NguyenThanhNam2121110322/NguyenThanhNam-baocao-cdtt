@@ -246,12 +246,16 @@ class ProductController extends Controller
 
     }
 
-    public function product_category($limit,$category_id)
+    public function product_category($category_id,$limit)
     {
+      
+
+        $cat=Category::where([['slug','=',$category_id]])->first();
+
         $listid = array();
-        array_push($listid, $category_id + 0);
+        array_push($listid, $cat->id + 0);
         $args_cat1 = [
-            ['parent_id', '=', $category_id + 0],
+            ['parent_id', '=', $cat->id + 0],
             ['status', '=', 1]
         ];
         $list_category1 = Category::where($args_cat1)->get();
@@ -285,9 +289,13 @@ class ProductController extends Controller
         );
     }
 
-    public function product_brand($limit,$brand_id )
+    public function product_brand($brand_id,$limit )
     {
-        $products = Product::where([['brand_id', '=', $brand_id], ['status', '=', 1]])
+$arg=[
+    ['brand_id', '=', $brand_id],
+     ['status', '=', 1]
+];
+        $products = Product::where($arg)
             ->orderBy('created_at', 'DESC')
             ->limit($limit)
             ->get();
@@ -299,6 +307,18 @@ class ProductController extends Controller
             ],
             200
         );
+    }
+
+    public function search_product($key,$limit, $page = 1){
+        $count_products = Product::where([['name', 'like','%'.$key.'%'], ['status', '=', 1]])->get();
+        $end_page = 1;
+        if (count($count_products) > $limit) {
+            $end_page = ceil(count($count_products) / $limit);
+        }    
+        $offset = ($page - 1) * $limit;
+        $products = Product::where([['name', 'like','%'.$key.'%'], ['status', '=', 1]])->orderBy('created_at', 'DESC')->offset($offset)->limit($limit)->get();
+        return response()->json(['success' => true,'message' => 'Tải dữ liệu thành công','products' => $products,'end_page'=>$end_page],200);
+
     }
 
 

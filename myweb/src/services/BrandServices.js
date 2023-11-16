@@ -19,12 +19,17 @@ function remove(id){
     return httpAxios.delete('brand/destroy/'+id);
 
 }
+function getBySlug(slug){
+    return httpAxios.get("brand/show/"+slug);
+
+} 
 
 const brandservice = {
     getAll: getAll,
     getById: getById,
     create: create,
     update: update,
-    remove: remove
+    remove: remove,
+    getBySlug:getBySlug,
 }
 export default brandservice;

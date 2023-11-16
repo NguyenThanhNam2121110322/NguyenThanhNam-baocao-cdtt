@@ -1,37 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import postservice from "../../../services/PostServices";
-import { FiRotateCcw} from "react-icons/fi";
+import { FiRotateCcw } from "react-icons/fi";
 import topicservices from "../../../services/TopicServices";
 
 
 function PostUpdate() {
-    const navigate = useNavigate(); // chuyen trang
-    const [topic_id, setTopicId] = useState(0);
-    const [title, setTitle] = useState('');
-    const [detail, setDetail] = useState('');
-    const [type, setType] = useState('');
-    const [metadesc, setMetadesc] = useState('');
-    const [metakey, setMetakey] = useState('');
-    const [status, setStatus] = useState(1);
-
-    const {id}=useParams("id");
-
-    useEffect(function(){
-        (async function(){
-            await postservice.getById(id).then(function(result){
-                const data = result.data.post;
-                setTopic(data.topic_id);
-                setTitle(data.title);
-                setDetail(data.detail);
-                setType(data.type);
-                setMetadesc(data.metadesc);
-                setMetakey(data.metakey);
-                setStatus(data.status);
-
-            })
-        })();
-    },[]);
 
     const [topics,setTopic]=useState([]);
     useEffect(function(){
@@ -42,6 +16,37 @@ function PostUpdate() {
         })();
     },[]);
 
+    const navigate = useNavigate(); // chuyen trang
+    const [topic_id, setTopicId] = useState(0);
+    const [title, setTitle] = useState('');
+    const [detail, setDetail] = useState('');
+    const [type, setType] = useState('');
+    const [description, setDescription] = useState('');
+    // const [metadesc, setMetadesc] = useState('');
+    // const [metakey, setMetakey] = useState('');
+    const [status, setStatus] = useState(1);
+
+    const { id } = useParams("id");
+
+    useEffect(function () {
+        (async function () {
+            await postservice.getById(id).then(function (result) {
+                const data = result.data.post;
+                setTopic(data.topic_id);
+                setTitle(data.title);
+                setDetail(data.detail);
+                setDescription(data.detail);
+                setType(data.type);
+                // setMetadesc(data.metadesc);
+                // setMetakey(data.metakey);
+                setStatus(data.status);
+
+            })
+        })();
+    }, []);
+
+   
+
     async function postEdit(event) {
         event.preventDefault();
         const image = document.querySelector("#image");
@@ -51,8 +56,9 @@ function PostUpdate() {
         post.append("title", title);
         post.append("detail", detail);
         post.append("type", type);
-        post.append("metadesc", metadesc);
-        post.append("metakey", metakey);
+        post.append("description", description);
+        // post.append("metadesc", metadesc);
+        // post.append("metakey", metakey);
         post.append("status", status);
         if (image.files.length === 0) {
             post.append("image", "")
@@ -61,7 +67,7 @@ function PostUpdate() {
             post.append("image", image.files[0]);
         }
 
-        await postservice.update(post,id).then(function (res) {
+        await postservice.update(post, id).then(function (res) {
             alert(res.data.message);
             navigate('/admin/post', { replace: true });
         })
@@ -102,24 +108,24 @@ function PostUpdate() {
                                 <input onChange={(e) => setType(e.target.value)} type="text" name="type" value={type} className="form-control" />
                             </div>
                             <div className="md-3">
-                                <label htmlFor="metakey">Từ khóa</label>
-                                <textarea onChange={(e) => setMetakey(e.target.value)} name="metakey" value={metakey} className="form-control"></textarea>
+                                <label htmlFor="description">Mô tả</label>
+                                <textarea onChange={(e) => setDescription(e.target.value)} name="description" value={description} className="form-control"></textarea>
                             </div>
-
-                            <div className="md-3">
-                                <label htmlFor="metadesc">Mô tả</label>
-                                <textarea onChange={(e) => setMetadesc(e.target.value)} name="metadesc" value={metadesc} className="form-control"></textarea>
-                            </div>
+                            
                         </div>
 
                         <div className="col-md-3">
-                            <div className="md-3">
+                            {/* <div className="md-3">
                                 <label htmlFor="topic_id">Topic Id</label>
                                 <select onChange={(e) => setTopicId(e.target.value)} value={topic_id} name="topic_id" className="form-control">
                                     <option value="0">Danh mục cha</option>
-
+                                    {topics.map(function (top, index) {
+                                        return (
+                                            <option key={index} value={top.id}>{top.name}</option>
+                                        )
+                                    })}
                                 </select>
-                            </div>
+                            </div> */}
                             <div className="md-3">
                                 <label htmlFor="image">Hình ảnh</label>
                                 <input type="file" id="image" className="form-control" />

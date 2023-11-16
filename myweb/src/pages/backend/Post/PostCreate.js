@@ -21,9 +21,9 @@ function PostCreate() {
     const [topic_id, setTopicId] = useState(0);
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
-    // const [type, setType] = useState('');
-    const [metadesc, setMetadesc] = useState('');
-    const [metakey, setMetakey] = useState('');
+    const [type, setType] = useState('');
+    const [description, setDescription] = useState('');
+    // const [metakey, setMetakey] = useState('');
     const [status, setStatus] = useState(1);
     async function postStore(event) {
         event.preventDefault();
@@ -33,9 +33,10 @@ function PostCreate() {
         post.append("topic_id", topic_id);
         post.append("title", title);
         post.append("detail", detail);
-        post.append("type", 'post');
-        post.append("metadesc", metadesc);
-        post.append("metakey", metakey);
+        post.append("description", description);
+        post.append("type", type);
+        // post.append("metadesc", metadesc);
+        // post.append("metakey", metakey);
         post.append("status", status);
         post.append("image",image.files[0]);
 
@@ -74,18 +75,18 @@ function PostCreate() {
                                 <label htmlFor="detail">Chi tiết</label>
                                 <textarea onChange={(e) => setDetail(e.target.value)} name="detail" value={detail} className="form-control"></textarea>
                             </div>
-                            {/* <div className="md-3">
+                            <div className="md-3">
                                 <label htmlFor="type">Type</label>
                                 <input onChange={(e) => setType(e.target.value)} type="text" name="type" value={type} className="form-control" />
-                            </div> */}
-                            <div className="md-3">
+                            </div>
+                            {/* <div className="md-3">
                                 <label htmlFor="metakey">Từ khóa</label>
                                 <textarea onChange={(e) => setMetakey(e.target.value)} name="metakey" value={metakey} className="form-control"></textarea>
-                            </div>
+                            </div> */}
 
                             <div className="md-3">
-                                <label htmlFor="metadesc">Mô tả</label>
-                                <textarea onChange={(e) => setMetadesc(e.target.value)} name="metadesc" value={metadesc} className="form-control"></textarea>
+                                <label htmlFor="description">Mô tả</label>
+                                <textarea onChange={(e) => setDescription(e.target.value)} name="description" value={description} className="form-control"></textarea>
                             </div>
                         </div>
 

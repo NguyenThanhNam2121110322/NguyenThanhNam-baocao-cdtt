@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Str;
+use App\Models\Topic;
 
 class PostController extends Controller
 {
     /*lay danh sach*/
     public function index(){
-        $posts = Post::all();
+    $posts = Post::all();
     return response()->json(['success'=>true,'message'=>"Tải dữ liệu thành công",'posts'=>   $posts],200);
+
 }
         
 /*lay bang id -> chi tiet */
@@ -31,6 +35,7 @@ public function store(Request $request){
     $post->title = $request->title; //form
     $post->slug = Str::of($request->name)->slug('-');
     $post->detail = $request->detail; //form
+    $post->description = $request->detail; //form
      //upload image
      $files = $request->image;
      if ($files != null) {
@@ -43,8 +48,7 @@ public function store(Request $request){
      }
      //
     $post->type = $request->type; //form
-    $post->metakey = $request->metakey; //form
-    $post->metadesc = $request->metadesc; //form
+
     $post->created_at = date('Y-m-d H:i:s');
     $post->created_by = 1;
     $post->status = $request->status; //form
@@ -71,8 +75,7 @@ public function update(Request $request,$id){
     }
     //
     $post->type = $request->type; //form
-    $post->metakey = $request->metakey; //form
-    $post->metadesc = $request->metadesc; //form
+
     $post->created_at = date('Y-m-d H:i:s');
     $post->created_by = 1;
     $post->status = $request->status; //form
